@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "src/app/**/*.ts",
+    "src/app/**/*.js",
+    "src/libs/**/*.ts",
+    "src/libs/**/*.js"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.e2e-spec.ts",
+    "**/*.test.ts",
+    "test/**/*.mock.ts"
+  ]
+}
