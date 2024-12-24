@@ -10,8 +10,9 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "types": ["jest"],
-    "importHelpers": true,
+    "types": [
+      "jest"
+    ],
     "target": "es2020",
     "lib": [
       "es2020",
@@ -20,9 +21,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules","**/*.spec.ts", "**/*.e2e-spec.ts", "**/*.test.ts", "test/**/*.mock.ts"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.e2e-spec.ts",
+    "**/*.test.ts",
+    "test/**/*.mock.ts"
+  ]
 }

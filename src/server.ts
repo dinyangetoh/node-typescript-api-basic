@@ -1,17 +1,25 @@
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 
+import express, { Application, RequestHandler, Router } from 'express';
 import App from './app';
-import DefaultController from './app/controllers/default.controller';
-import HomeController from './app/controllers/home.controller';
+import { APP_PORT } from './constants';
 
 dotenv.config();
 
-// Server Port
-const port = Number(process.env.PORT) || 9000;
+// Express App
+const expressApp: Application = express();
 
-// Initialize app with Controllers
-const app = new App([new DefaultController(), new HomeController()], [bodyParser.json()]);
+// Express Router
+const expressRouter: Router = express.Router();
 
-// Start Server
-app.startServer(port);
+// Plugins
+const plugins: RequestHandler[] = [bodyParser.json()];
+
+// Configurable Request Middlewares
+const requestMiddlewares: RequestHandler[] = [];
+
+const app = new App(expressApp, expressRouter, plugins, requestMiddlewares);
+
+// Start Server hereloe
+app.startServer(APP_PORT);

@@ -1,32 +1,34 @@
-import express, { Application, RequestHandler } from 'express';
-import BaseController from './app/common/BaseController';
+import { Application, RequestHandler, Router } from 'express';
+import appRoutes from './app/routes/app.routes';
 
 export default class App {
-    public expressApp: Application = express();
+    constructor(
+        private readonly expressApp: Application,
+        private readonly expressRouter: Router,
+        private readonly plugins: RequestHandler[],
+        private readonly requestMiddlewares: RequestHandler[],
+    ) {}
 
-    constructor(readonly controllers: BaseController[], readonly plugins: RequestHandler[]) {}
-
-    public init() {
+    public initialize(): void {
         this.loadPlugins();
-        this.loadRoutes();
+        this.loadRoutes(this.expressRouter);
+        this.expressApp.use(this.expressRouter);
     }
 
-    private loadPlugins() {
+    public startServer(port: number) {
+        this.initialize();
+        this.expressApp.listen(port, () => {
+            console.log(`Server running on port ${port}`);
+        });
+    }
+
+    private loadPlugins(): void {
         this.plugins.forEach((plugin) => {
             this.expressApp.use(plugin);
         });
     }
 
-    private loadRoutes() {
-        this.controllers.forEach(({ router, routePrefix }) => {
-            this.expressApp.use(`/${routePrefix}`, router);
-        });
-    }
-
-    public startServer(port = 9000) {
-        this.init();
-        this.expressApp.listen(port, () => {
-            console.log(`Server running on port ${port}`);
-        });
+    private loadRoutes(router: Router) {
+        appRoutes(router, this.requestMiddlewares);
     }
 }
