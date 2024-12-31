@@ -5,3 +5,6 @@ with support for typescript, linting and formatting with prettier
 
 ### Installation
 
+```bash
+  npm ci
+```

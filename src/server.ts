@@ -21,5 +21,5 @@ const requestMiddlewares: RequestHandler[] = [];
 
 const app = new App(expressApp, expressRouter, plugins, requestMiddlewares);
 
-// Start Server hereloe
+// Start Server here
 app.startServer(APP_PORT);
