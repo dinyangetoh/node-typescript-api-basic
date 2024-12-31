@@ -1,10 +1,13 @@
-## NodeJs Typescript API Starter Template
+## User Profile Device Audit API
 
-This is a starter template for generating basic Node Project directory structure
-with support for typescript, linting and formatting with prettier
+This is a POC for a robust and secure user management system with a focus on clean code, security, and best practices. The task involves implementing features for registration, login, profile management, and device management
 
 ### Installation
 
 ```bash
   npm ci
+```
+
+```bash
+ npm run dev
 ```

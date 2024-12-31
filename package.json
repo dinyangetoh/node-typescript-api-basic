@@ -1,13 +1,13 @@
 {
-  "name": "node-typescript-api-starter",
+  "name": "user-profile-device-audit",
   "version": "1.0.0",
-  "description": "Starter project for build Restful APIs with NodeJs and Typescript",
+  "description": "User Profile Device Audit API",
   "main": "dist/server.js",
-  "author": "John Doe",
-  "license": "MIT",
-  "type": "module",
+  "author": "David Inyang-Etoh",
+  "license": "UNLICENSED",
   "scripts": {
-    "dev": "npx tsc --watch & node --watch dist/server.js",
+    "start": "npx ts-node src/server.ts",
+    "dev": "npx ts-node-dev src/server.ts",
     "lint": "npx eslint src"
   },
   "devDependencies": {
@@ -25,13 +25,21 @@
     "globals": "^15.14.0",
     "jest": "^29.7.0",
     "prettier": "^3.4.2",
+    "prisma": "^6.1.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "reflect-metadata": "^0.2.2"
   }
 }

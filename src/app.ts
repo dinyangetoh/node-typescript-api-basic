@@ -1,5 +1,7 @@
 import { Application, RequestHandler, Router } from 'express';
 import appRoutes from './app/routes/app.routes';
+import userRoutes from './app/routes/user.routes';
+import 'reflect-metadata';
 
 export default class App {
     constructor(
@@ -30,5 +32,6 @@ export default class App {
 
     private loadRoutes(router: Router) {
         appRoutes(router, this.requestMiddlewares);
+        userRoutes(router, this.requestMiddlewares);
     }
 }
