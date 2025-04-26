@@ -1,12 +1,28 @@
+import { PrismaClient } from '@prisma/client';
+import AppController from './app/controllers/AppController';
+import UserController from './app/controllers/UserController';
+import UserRepository from './app/repositories/UserRepository';
 import AppService from './app/services/AppService';
 import UserService from './app/services/UserService';
-import UserRepository from './app/repositories/UserRepository';
-import { PrismaClient } from '@prisma/client';
-
-export const appService = new AppService();
 
 const prisma = new PrismaClient();
 
-const userRepository = new UserRepository(prisma);
+function getUserRepository(): UserRepository {
+    return new UserRepository(prisma);
+}
 
-export const userService = new UserService(userRepository);
+export function getUserService(): UserService {
+    return new UserService(getUserRepository());
+}
+
+function getAppService(): AppService {
+    return new AppService();
+}
+
+export function getAppController(): AppController {
+    return new AppController(getAppService());
+}
+
+export function getUserController(): UserController {
+    return new UserController(getUserService());
+}
